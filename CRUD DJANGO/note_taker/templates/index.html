@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactus">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactorg">Contacts</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+      {% if obj %}
+
+      <form action="/update/{{obj.id}}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Notes Name</label>
+          <input type="text" value="{{obj.note}}" class="form-control" id="notes" aria-describedby="emailHelp" name="note">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">description</label>
+          <input type="text" value="{{obj.desc}}" class="form-control" id="exampleInputPassword1" name="desc">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+
+      {% else %}
+
+    <form action="addnote" method="post">
+      {% if messages %}
+      <div class="alert alert-success" role="alert">
+        
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+        
+      </div>
+      {% endif %}
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Notes Name</label>
+          <input type="text" class="form-control" id="notes" aria-describedby="emailHelp" name="note">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">description</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="important" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Important</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div><br/>
+      {% endif %}
+
+      <div class="container  " style="display: flex;">
+        {% for x in params %}
+        <div class="card " style="width: 300px"  >
+          {% if x.important == 'on' %}
+          <div class="card-header alert alert-success" style="height: 40px;">
+            Featured
+          </div>
+          <div class="card-body " >
+            {{x.note}} <button value="Del"><a href="del/{{x.id}}">Delete</a></button>
+            <button value="Edit"><a href="edit/{{x.id}}">Edit</a></button> <br/>
+        </div>
+          {% else %}
+          <div class="card-header " >
+            Featured
+          </div>
+          <div class="card-body">
+              {{x.note}} <button value="Del"><a href="del/{{x.id}}">Delete</a></button>
+              <button value="Edit"><a href="edit/{{x.id}}">Edit</a></button> <br/>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      
+    
+
+    
+  </body>
+</html>
