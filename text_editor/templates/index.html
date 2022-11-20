@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Text Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body style="background-color: rgb(170, 233, 68);">
+      <div class="mb-3" style="padding: 20px;">
+        <h1 style="align-items: center; text-align:center;">Text Editor App</h1>
+        <form action="edit" >
+        <div>
+        <label for="exampleFormControlTextarea1" class="form-label">Enter Text Here</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 230px;" name="text"></textarea>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="puncrem" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Punctuations Remover</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="newlinerem" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">New line Remover</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="extraspcrem" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Extra Space Remover</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="upcrconv" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Upper case converter</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="charcount" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Charecter Counter</label>
+        </div>
+        <input type="submit" value="Edit" class="btn btn-outline-info" style="padding: 10px; width:100px;">
+        </form>
+      </div>
+      
+     
+     
+      
+  </body>
+</html>
